@@ -36,14 +36,7 @@
       font-family: Consolas, monospace;
       font-size: 0.9rem;
     }
-</style>
-With these changes, your YAML code blocks should now have syntax highlighting when you view the HTML document in a browser.
-
-
-
-
-
-	</style>
+  </style>
 </head>
 <body>
 	<h1>Simple demonstration on how to pass information between tasks in Tekton/OpenShift Pipelines</h1>
