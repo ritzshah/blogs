@@ -1,17 +1,13 @@
-
 This example is tested with Red Hat OpenShift Pipelines version 1.70 and higher, running on OpenShift Version 4.10 and higher. Ensure that Red Hat OpenShift Pipelines operator is installed.
-Create a Test Project
 
-yaml
+Create a test project
 kind: Project
 apiVersion: project.openshift.io/v1
 metadata:
   name: test
-
 Before you create tasks and pipeline, ensure that you have a PVC associated with the project where you are creating tasks and pipeline.
-Create a PVC Named Test
 
-yaml
+Create a PVC named test
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -25,9 +21,8 @@ spec:
       storage: 5Gi
   storageClassName: gp2
   volumeMode: Filesystem
-
 In the first task, add a workspace like this in spec. First, have a workspace name 'source' in this case and use that in the 2nd task. Capture what you need to pass in data as results and redirect that information to a file for eg. 'ee_data.json' which you call in 2nd task.
-yaml
+
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
@@ -51,9 +46,8 @@ spec:
         printf "%s" "${data}" > ee_data.json
         AC_EE_ID=$(cat ee_data.json)
         printf "%s" ${AC_EE_ID}
-
 In the next task, task 2, you can reference 'ee_data.json' as shown below:
-yaml
+
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
@@ -70,11 +64,9 @@ spec:
         #!/usr/bin/env bash
         AC_EE_ID=$(cat ee_data.json)
         printf "%s" ${AC_EE_ID}
-
 When you run task1 and task2 in a pipeline, both should print the same output from both the tasks.
-Create a Pipeline
 
-yaml
+Create a pipeline
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
@@ -114,14 +106,11 @@ spec:
         workspaces:
           - name: source
             workspace: source
-
 When you run the pipeline, both the tasks will show the same output as shown below:
+
 STEP-TASK1 This is the output from task 1
 STEP-TASK2 This is the output from task 1
-
-Task Runs and Pipeline Run
-
-yaml
+Task runs and pipeline run
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
@@ -170,5 +159,4 @@ spec:
     - name: source
       persistentVolumeClaim:
         claimName: test
-
 This simple example provides you with a basic understanding of how you can pass output from one task to another, as input and you can extend this for your use case.
