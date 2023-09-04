@@ -29,13 +29,13 @@
 	<p>This document simplifies how you can pass information from one task to other task in a tekton pipeline. I has all the steps needed including yaml files for a test use case demonstrating simple way of passing information from one task to another in a tekton pipeline. It starts right from basis like creating a project and persistent volume creation (PVC) before you start creation of task and pipeline. Finally it gives you yaml files for respective task runs and pipeline run. You can extend this example for your use case.</p>
 	<p>This example is tested with Red Hat OpenShift Pipelines version 1.70 and higher, running on OpenShift Version 4.10 and higher. Ensure that Red Hat OpenShift Pipelines operator is installed.</p>
 	<h2>Create a Test Project</h2>
-	<pre><code>kind: Project
+	<pre><code class="language-yaml">kind: Project
 apiVersion: project.openshift.io/v1
 metadata:
   name: test</code></pre>
 	<p>Before you create tasks and pipeline, ensure that you have a PVC associated with the project where you are creating tasks and pipeline.</p>
 	<h2>Create a PVC Named Test</h2>
-	<pre><code>kind: PersistentVolumeClaim
+	<pre><code class="language-yaml">kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: test
@@ -49,7 +49,7 @@ spec:
   storageClassName: gp2
   volumeMode: Filesystem</code></pre>
 	<p>In the first task, add a workspace like this in spec. First, have a workspace name 'source' in this case and use that in the 2nd task. Capture what you need to pass in data as results and redirect that information to a file for eg. 'ee_data.json' which you call in 2nd task.</p>
-	<pre><code>apiVersion: tekton.dev/v1beta1
+	<pre><code class="language-yaml">apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task1
@@ -73,7 +73,7 @@ spec:
         AC_EE_ID=$(cat ee_data.json)
         printf "%s" ${AC_EE_ID}</code></pre>
 	<p>In the next task, task 2, you can reference 'ee_data.json' as shown below:</p>
-	<pre><code>apiVersion: tekton.dev/v1beta1
+	<pre><code class="language-yaml">apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task2
@@ -91,7 +91,7 @@ spec:
         printf "%s" ${AC_EE_ID}</code></pre>
 	<p>When you run task1 and task2 in a pipeline, both should print the same output from both the tasks.</p>
 	<h2>Create a Pipeline</h2>
-	<pre><code>apiVersion: tekton.dev/v1beta1
+	<pre><code class="language-yaml">apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: "value_pass_pipeline"
@@ -134,7 +134,7 @@ spec:
 	<pre>STEP-TASK1 This is the output from task 1
 STEP-TASK2 This is the output from task 1</pre>
 	<h2>Task Runs and Pipeline Run</h2>
-	<pre><code>apiVersion: tekton.dev/v1beta1
+	<pre><code class="language-yaml">apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
   name: test-0ij91k-task1
