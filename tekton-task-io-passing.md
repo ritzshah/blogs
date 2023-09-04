@@ -2,6 +2,27 @@
 <html>
 <head>
 	<title>Simple demonstration on how to pass information between tasks in Tekton/OpenShift Pipelines</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" integrity="sha512-9ZVv7w4z5QmOJyYv7j5yBjKz5J6QzQ4f5J5fz3K8vJ1Xc6fKgJ7qfQvJj9J7GfZ4JzJ1IbXvz1DwKz4Z+Jg3/A==" crossorigin="anonymous" />
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		h1, h2, h3 {
+			margin-top: 2rem;
+			margin-bottom: 1rem;
+		}
+		pre {
+			background-color: #f5f5f5;
+			padding: 1rem;
+			overflow-x: auto;
+		}
+		code {
+			font-family: Consolas, monospace;
+			font-size: 0.9rem;
+		}
+	</style>
 </head>
 <body>
 	<h1>Simple demonstration on how to pass information between tasks in Tekton/OpenShift Pipelines</h1>
