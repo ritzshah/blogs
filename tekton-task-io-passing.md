@@ -33,13 +33,6 @@
 apiVersion: project.openshift.io/v1
 metadata:
   name: test</code></pre>
-  	<pre><code class="language-css">
-body {
-	background-color: #f5f5f5;
-}
-	</code></pre>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js" integrity="sha512-+Z4v2cLj5jw3zqZm5JyJ2UZ2Cq7xJf5f7LZJ1d8P7sJ8wvJGv8XJQGJvPz7I6vCZyvM3vQv7P5Y4x5qQqKz5jA==" crossorigin="anonymous"></script>
-</body>
 	<p>Before you create tasks and pipeline, ensure that you have a PVC associated with the project where you are creating tasks and pipeline.</p>
 	<h2>Create a PVC Named Test</h2>
 	<pre><code class="language-yaml">kind: PersistentVolumeClaim
