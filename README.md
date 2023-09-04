@@ -1,1 +1,1 @@
-# My glob articles go here.
+# My blog articles go here.
