@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Passing Output Between Tasks in OpenShift Pipelines</title>
+	<title>Simple demonstration on how to pass information between tasks in Tekton/OpenShift Pipelines</title>
 </head>
 <body>
-	<h1>Passing Output Between Tasks in OpenShift Pipelines</h1>
+	<h1>Simple demonstration on how to pass information between tasks in Tekton/OpenShift Pipelines</h1>
+	<p>This document simplifies how you can pass information from one task to other task in a tekton pipeline. I has all the steps needed including yaml files for a test use case demonstrating simple way of passing information from one task to another in a tekton pipeline. It starts right from basis like creating a project and persistent volume creation (PVC) before you start creation of task and pipeline. Finally it gives you yaml files for respective task runs and pipeline run. You can extend this example for your use case.</p>
 	<p>This example is tested with Red Hat OpenShift Pipelines version 1.70 and higher, running on OpenShift Version 4.10 and higher. Ensure that Red Hat OpenShift Pipelines operator is installed.</p>
 	<h2>Create a Test Project</h2>
 	<pre><code>kind: Project
