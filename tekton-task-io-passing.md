@@ -1,14 +1,19 @@
-This example is tested with Red Hat OpenShift Pipelines version 1.70 and higher, running on OpenShift Version 4.10 and higher. Ensure that Red Hat OpenShift Pipelines operator is installed.
-
-Create a test project
-kind: Project
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Passing Output Between Tasks in OpenShift Pipelines</title>
+</head>
+<body>
+	<h1>Passing Output Between Tasks in OpenShift Pipelines</h1>
+	<p>This example is tested with Red Hat OpenShift Pipelines version 1.70 and higher, running on OpenShift Version 4.10 and higher. Ensure that Red Hat OpenShift Pipelines operator is installed.</p>
+	<h2>Create a Test Project</h2>
+	<pre><code>kind: Project
 apiVersion: project.openshift.io/v1
 metadata:
-  name: test
-Before you create tasks and pipeline, ensure that you have a PVC associated with the project where you are creating tasks and pipeline.
-
-Create a PVC named test
-kind: PersistentVolumeClaim
+  name: test</code></pre>
+	<p>Before you create tasks and pipeline, ensure that you have a PVC associated with the project where you are creating tasks and pipeline.</p>
+	<h2>Create a PVC Named Test</h2>
+	<pre><code>kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: test
@@ -20,10 +25,9 @@ spec:
     requests:
       storage: 5Gi
   storageClassName: gp2
-  volumeMode: Filesystem
-In the first task, add a workspace like this in spec. First, have a workspace name 'source' in this case and use that in the 2nd task. Capture what you need to pass in data as results and redirect that information to a file for eg. 'ee_data.json' which you call in 2nd task.
-
-apiVersion: tekton.dev/v1beta1
+  volumeMode: Filesystem</code></pre>
+	<p>In the first task, add a workspace like this in spec. First, have a workspace name 'source' in this case and use that in the 2nd task. Capture what you need to pass in data as results and redirect that information to a file for eg. 'ee_data.json' which you call in 2nd task.</p>
+	<pre><code>apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task1
@@ -45,10 +49,9 @@ spec:
         data="This is the output from task 1"
         printf "%s" "${data}" > ee_data.json
         AC_EE_ID=$(cat ee_data.json)
-        printf "%s" ${AC_EE_ID}
-In the next task, task 2, you can reference 'ee_data.json' as shown below:
-
-apiVersion: tekton.dev/v1beta1
+        printf "%s" ${AC_EE_ID}</code></pre>
+	<p>In the next task, task 2, you can reference 'ee_data.json' as shown below:</p>
+	<pre><code>apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: task2
@@ -63,11 +66,10 @@ spec:
       script: |
         #!/usr/bin/env bash
         AC_EE_ID=$(cat ee_data.json)
-        printf "%s" ${AC_EE_ID}
-When you run task1 and task2 in a pipeline, both should print the same output from both the tasks.
-
-Create a pipeline
-apiVersion: tekton.dev/v1beta1
+        printf "%s" ${AC_EE_ID}</code></pre>
+	<p>When you run task1 and task2 in a pipeline, both should print the same output from both the tasks.</p>
+	<h2>Create a Pipeline</h2>
+	<pre><code>apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: "value_pass_pipeline"
@@ -105,13 +107,12 @@ spec:
           - task1
         workspaces:
           - name: source
-            workspace: source
-When you run the pipeline, both the tasks will show the same output as shown below:
-
-STEP-TASK1 This is the output from task 1
-STEP-TASK2 This is the output from task 1
-Task runs and pipeline run
-apiVersion: tekton.dev/v1beta1
+            workspace: source</code></pre>
+	<p>When you run the pipeline, both the tasks will show the same output as shown below:</p>
+	<pre>STEP-TASK1 This is the output from task 1
+STEP-TASK2 This is the output from task 1</pre>
+	<h2>Task Runs and Pipeline Run</h2>
+	<pre><code>apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
   name: test-0ij91k-task1
@@ -158,5 +159,7 @@ spec:
   workspaces:
     - name: source
       persistentVolumeClaim:
-        claimName: test
-This simple example provides you with a basic understanding of how you can pass output from one task to another, as input and you can extend this for your use case.
+        claimName: test</code></pre>
+	<p>This simple example provides you with a basic understanding of how you can pass output from one task to another, as input and you can extend this for your use case.</p>
+</body>
+</html>
