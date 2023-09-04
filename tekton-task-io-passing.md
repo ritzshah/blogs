@@ -2,7 +2,10 @@
 <html>
 <head>
 	<title>Simple demonstration on how to pass information between tasks in Tekton/OpenShift Pipelines</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" integrity="sha512-9ZVv7w4z5QmOJyYv7j5yBjKz5J6QzQ4f5J5fz3K8vJ1Xc6fKgJ7qfQvJj9J7GfZ4JzJ1IbXvz1DwKz4Z+Jg3/A==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" 
+  integrity="sha512-9ZVv7w4z5QmOJyYv7j5yBjKz5J6QzQ4f5J5fz3K8vJ1Xc6fKgJ7qfQvJj9J7GfZ4JzJ1IbXvz1DwKz4Z+Jg3/A==" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js" integrity="sha512-0vZ1ElDe/C0nA3mp1ukU6+O+6br+hVmu3fjgsWGo09iyMmjhu6mFs9Ema/ib8U2IbFrY2DAZrXJyQFm8+tOyBYA==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-wsK8k1xpGQ40z6ndOt0dEtmP4C0jBA0ryxzvJ6hJn+s3OqNG2hj/gCC4oz5Ue/aeIaZO5Q6wU/5vw7zkKJzyj4g==" crossorigin="anonymous"></script>
 	<style>
 		body {
 			font-family: Arial, sans-serif;
@@ -22,6 +25,24 @@
 			font-family: Consolas, monospace;
 			font-size: 0.9rem;
 		}
+    /* Customize the look of the code block */
+    pre {
+      background-color: #f5f5f5;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    /* Customize the code font style */
+    code {
+      font-family: Consolas, monospace;
+      font-size: 0.9rem;
+    }
+</style>
+With these changes, your YAML code blocks should now have syntax highlighting when you view the HTML document in a browser.
+
+
+
+
+
 	</style>
 </head>
 <body>
