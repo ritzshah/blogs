@@ -184,4 +184,6 @@ spec:
         claimName: test</code></pre>
 	<p>This simple example provides you with a basic understanding of how you can pass output from one task to another, as input and you can extend this for your use case.</p>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js" integrity="sha512-6cZtNfzDZ4vJ4v5E5cKtZ5J9jzL3XK2mX5JzQJ1QlZVjI0vLZvUQjz5K7LsS0K0tZa9yZz3QY1jv5fL4l7bLgQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-5TzQ8vN1Zv2aJ3zjv8L7zQ9KvzvJn9vqZQv8VzL4J2vL6z7y9C5lVZgB1r8W5WvQJ5LrT5ZzJlQ2z8JmJjJL2Q==" crossorigin="anonymous"></script>
 </html>
